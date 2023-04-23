@@ -16,8 +16,7 @@ function App() {
             url:`${base_url}/profile`,
             headers: {
               'Access-Control-Allow-Origin' : '*'
-            }
-            
+            } 
         })
         .then((response) => {
             const res = response.data
