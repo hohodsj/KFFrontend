@@ -1,15 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
-import logo from './logo.svg'
-import './App.css'
+import logo from './logo.svg';
+import './App.css';
+
+
+const base_url = process.env.REACT_APP_KF_BASE_URL
 
 function App() {
     const[profileData, setProfileData] = useState(null)
 
     function getData() {
+        console.log(`base_url:${base_url}`)
         axios({
             method: "GET",
-            url:"/profile",
+            url:`${base_url}/profile`,
         })
         .then((response) => {
             const res = response.data
