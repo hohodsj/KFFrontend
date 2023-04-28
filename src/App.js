@@ -1,64 +1,25 @@
 import { useState } from "react";
+import {BrowserRouter, Route, Routes, Router} from 'react-router-dom'
 import axios from "axios";
 import logo from './logo.svg';
 import './App.css';
-
+import PasswordProtect from "./components/PasswordProtected";
+import Hello from "./components/Questions";
+import AdminPage from "./components/Admin";
+import Profile from "./components/Profile";
 
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
 function App() {
-    const[profileData, setProfileData] = useState(null)
-
-    function getData() {
-        console.log(`base_url:${base_url}`)
-        axios({
-            method: "GET",
-            url:`${base_url}/profile`,
-            headers: {
-              'Access-Control-Allow-Origin' : '*'
-            } 
-        })
-        .then((response) => {
-            const res = response.data
-            setProfileData(({
-                profile_name: res.name,
-                about_me: res.about
-            }))
-        }).catch((error) => {
-            if (error.response) {
-                console.log(error.response)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            }
-        })
-    }
 
     return (
-        <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        {/* new line start*/}
-        <p>To get your profile details: </p><button onClick={getData}>Click me</button>
-        {profileData && <div>
-              <p>Profile name: {profileData.profile_name}</p>
-              <p>About me: {profileData.about_me}</p>
-            </div>
-        }
-         {/* end of new line */}
-      </header>
-    </div>
+        <BrowserRouter>
+            <Routes>
+                <Route exact path="/" element={<PasswordProtect />} />
+                <Route exact path="admin" element={<AdminPage />} />
+                <Route exact path="profile" element={<Profile />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
