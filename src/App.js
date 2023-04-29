@@ -16,8 +16,8 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<PasswordProtect />} />
-                <Route path="admin" element={<AdminPage />} />
-                <Route path="profile" element={<Profile />} />
+                <Route exact path="admin" element={<AdminPage />} />
+                <Route exact path="profile" element={<Profile />} />
             </Routes>
         </BrowserRouter>
     );
