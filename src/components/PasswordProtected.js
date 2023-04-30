@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Hello from "./Questions";
+import ListQuestions from "./ListQuestions";
 
 const PasswordProtect = () => {
     const [isVerified, setIsVerified] = useState(false)
@@ -15,7 +15,7 @@ const PasswordProtect = () => {
 
     return (
         <>
-        {isVerified ? <Hello/>
+        {isVerified ? <ListQuestions/>
         :
         <form onSubmit={checkPw}>
             <input id="password" name="password"/>

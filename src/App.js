@@ -4,7 +4,6 @@ import axios from "axios";
 import logo from './logo.svg';
 import './App.css';
 import PasswordProtect from "./components/PasswordProtected";
-import Hello from "./components/Questions";
 import AdminPage from "./components/Admin";
 import Profile from "./components/Profile";
 
@@ -16,8 +15,8 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<PasswordProtect />} />
-                <Route path="admin" element={<AdminPage />} />
-                <Route path="profile" element={<Profile />} />
+                <Route exact path="admin" element={<AdminPage />} />
+                <Route exact path="profile" element={<Profile />} />
             </Routes>
         </BrowserRouter>
     );
