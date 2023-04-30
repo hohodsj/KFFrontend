@@ -47,10 +47,16 @@ const AdminQA = (props) => {
 
     }
 
-    const handleRemoveInput = (id) => {
+    const handleRemoveInput = async (id) => {
         if (id) {
             // delete
             console.log(`Remove ${id} from database`)
+            await axios.delete(`${base_url}/questions-answers`, {data:{
+                id: props.id,
+                question: question,
+                answer: answer,
+                hint: hint
+            } })
         }
         setVisible(!visible);
       };
