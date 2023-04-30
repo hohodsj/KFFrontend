@@ -4,7 +4,7 @@ import axios from "axios";
 import logo from './logo.svg';
 import './App.css';
 import PasswordProtect from "./components/PasswordProtected";
-import Hello from "./components/Questions";
+import Hello from "./components/subcomponents/Question";
 import AdminPage from "./components/Admin";
 import Profile from "./components/Profile";
 
