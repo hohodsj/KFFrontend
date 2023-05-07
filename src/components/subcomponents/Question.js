@@ -1,6 +1,5 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import axios from "axios";
-import { useState } from "react";
 
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
@@ -8,6 +7,7 @@ const LoadQuestion = (props) => {
     //const [question, setQuestion] = useState( () => props.question);
     const [answer, setAnswer] = useState(() => props.answer);
     //const [hint, setHint] = useState(() => props.hint);
+    
 
     const handleSubmit = async (event) => {
         event.preventDefault();
