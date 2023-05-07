@@ -23,11 +23,6 @@ const PasswordProtect = () => {
         }
     };
 
-    // useEffect(() => { 
-    //     const url = 'https://images.unsplash.com/photo-1623244727304-54995b233b1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-    //     setImg(url)
-    // })
-
     useEffect(() => {
         const fetchData = async () => {
         const response = await axios.get(`${base_url}/image/1`, {
