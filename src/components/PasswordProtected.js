@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ListQuestions from "./ListQuestions";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
@@ -6,9 +6,13 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
+import axios from 'axios';
+
+const base_url = process.env.REACT_APP_KF_BASE_URL
 
 const PasswordProtect = () => {
     const [isVerified, setIsVerified] = useState(false)
+    const [img, setImg] = useState()
 
     const checkPw = () => {
         const answer = document.getElementById("password").value;
@@ -19,15 +23,29 @@ const PasswordProtect = () => {
         }
     };
 
+    // useEffect(() => { 
+    //     const url = 'https://images.unsplash.com/photo-1623244727304-54995b233b1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+    //     setImg(url)
+    // })
+
+    useEffect(() => {
+        const fetchData = async () => {
+        const response = await axios.get(`${base_url}/image/1`, {
+                headers: {
+                    'Access-Control-Allow-Origin' : '*'
+                },
+            })
+            .then(response => (setImg(response.data.url)))
+            //console.log(`response.data: ${JSON.stringify(response.data.url)}`)
+        };
+        fetchData();
+    }, []);
+
     return (
         <>
         {isVerified ? <ListQuestions/>
         :
-        // <form onSubmit={checkPw}>
-        //     <input id="password" name="password"/>
-        //     <button>Submit</button>
-        // </form>
-        <Form onSubmit={checkPw} className="mt-5 center" style={{backgroundImage: `url(https://images.unsplash.com/photo-1623244727304-54995b233b1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80)`, backgroundSize: `cover`}}>
+        <Form onSubmit={checkPw} className="mt-5 center" style={{backgroundImage: `url(${img})`, backgroundSize: `cover`}}>
              <Row className="mb-3">
                  <Form.Label>What is the password?</Form.Label>
                  <Form.Control type="text" id="password" required />
