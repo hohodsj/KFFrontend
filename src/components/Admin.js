@@ -51,37 +51,37 @@ const AdminPage = () => {
         <div>
             {data ? (
                 <div>
+                    <strong>Number of questions{data.length}</strong>
                     <ul>
-                        <li>Number of questions{data.length}</li>
                         {data.map((qna) => (
                         <AdminQA id ={qna.id} question={qna.question}  answer={qna.answer} hint={qna.hint}/>
                     ))}
-                    </ul>
-                    <ul>
-                        <li>Background Images</li>
-                        {image ? (
-                                <div>
-                                    <ul>
-                                        <li>Background Images</li>
-                                        {image.map((img) => (
-                                        <LoadImage id ={img.id} name={img.name} url={img.url} />
-                                    ))}
-                                    </ul>
-                                </div>
-                            ) : (
-                                <p>No Images found...</p>
-                            )}
                     </ul>
                 </div>
             ) : (
                 <p>No questions found...</p>
             )}
-            <button onClick={addInput}>Add Input</button>
+            {/* <button onClick={addInput}>Add Input</button> */}
+            <p>Add a question</p>
             {Array.from({ length: counter }, (_, index) => (
                 <div key={index}>
                     <AdminQA />
                 </div>
             ))}
+            <br />
+            <br />
+            {image ? (
+                    <div>
+                        <strong>Background Images</strong>
+                        <ul>
+                            {image.map((img) => (
+                            <LoadImage id ={img.id} name={img.name} url={img.url} />
+                        ))}
+                        </ul>
+                    </div>
+                ) : (
+                    <p>No Images found...</p>
+                )}
             {/* <button onClick={getData}>Click me</button> */}
             {/* {QuestionsAndAnswers} */}
         </div>

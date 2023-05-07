@@ -10,6 +10,21 @@ const ListQuestions = () => {
     const [counter, setCounter] = useState(1);
     const [inputs, setInputs] = useState([""]);
 
+    const [img, setImg] = useState()
+
+    useEffect(() => {
+        const fetchData = async () => {
+        const response = await axios.get(`${base_url}/image/2`, {
+                headers: {
+                    'Access-Control-Allow-Origin' : '*'
+                },
+            })
+            .then(response => (setImg(response.data.url)))
+            //console.log(`response.data: ${JSON.stringify(response.data.url)}`)
+        };
+        fetchData();
+    }, []);
+
     useEffect(() => {
         const fetchData = async () => {
         const response = await axios.get(`${base_url}/questions`, {
@@ -25,7 +40,7 @@ const ListQuestions = () => {
 
 
     return (
-        <div>
+        <div style={{backgroundImage: `url(${img})`, backgroundSize: `cover`, backgroundRepeat: 'no-repeat', height: '100vh'}}>
             {data ? (
                 <div>
                     <ul>

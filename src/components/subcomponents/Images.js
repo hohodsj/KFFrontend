@@ -26,7 +26,7 @@ const LoadImage = (props) => {
                     },
                 }
             ).then((resp) => {
-                alert(resp.data.verified)
+                alert('updated')
             }).catch((error) => {
                 console.error(error)
             })
@@ -39,10 +39,11 @@ const LoadImage = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
-        <p># {props.id}</p>
-        <label>Image:
-            <input type="text" value={props.name} />
+        <br/>
+        <label>
+            <p type="text" value={props.name}>{props.name} Page</p>
         </label>
+        <br/>
         <label>Url:
             <input type="text" value={url} onChange={(e) => setUrl(e.target.value)}/>
         </label>

@@ -73,7 +73,7 @@ const AdminQA = (props) => {
         <label>Hint:
             <input type="text" value={hint} onChange={(e) => setHint(e.target.value)}/>
         </label>
-        <input type="submit" />
+        <input type="submit" value="Submit" />
         <button type="button" onClick={() => handleRemoveInput(props.id)}>
             Remove
         </button>
