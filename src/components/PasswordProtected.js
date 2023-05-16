@@ -19,7 +19,7 @@ const PasswordProtect = () => {
         if (answer === "0522") {
             setIsVerified(true);
         } else {
-            alert("Nope")
+            alert("Who are you?")
         }
     };
 

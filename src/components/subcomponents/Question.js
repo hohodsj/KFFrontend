@@ -1,12 +1,19 @@
 import React,{useEffect, useState} from "react";
 import axios from "axios";
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
 const LoadQuestion = (props) => {
     //const [question, setQuestion] = useState( () => props.question);
     const [answer, setAnswer] = useState(() => props.answer);
-    //const [hint, setHint] = useState(() => props.hint);
+    const [checkmark, setCheckmark] = useState();
+    const [count, setCount] = useState(0);
     
 
     const handleSubmit = async (event) => {
@@ -27,7 +34,15 @@ const LoadQuestion = (props) => {
                     },
                 }
             ).then((resp) => {
-                alert(resp.data.verified)
+                if(resp.data.verified) {
+                    setCheckmark(<span>&#10003;</span>)
+                } else {
+                    setCount(count => count + 1)
+                    setCheckmark(<span>&#10060;</span>)
+                    if (count >= 3) {
+                        alert(`Hint:${props.hint}`)
+                    }
+                }
             }).catch((error) => {
                 console.error(error)
             })
@@ -39,19 +54,21 @@ const LoadQuestion = (props) => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-        <p># {props.id}</p>
-        <label>Question:
-            <input type="text" value={props.question} />
-        </label>
-        <label>Answer:
-            <input type="text"value={answer} onChange={(e) => setAnswer(e.target.value)}/>
-        </label>
-        <label>Hint:
-            <input type="text" value={props.hint}/>
-        </label>
-        <input type="submit" />
-        </form>
+        <Form onSubmit={handleSubmit}>
+            <Row className="mb-3">
+                <Col xs={4}>
+                    <Form.Label># {props.id}</Form.Label>
+                    <br/>
+                    <Form.Label>Question: {props.question} {checkmark}
+                    </Form.Label>
+                    <InputGroup>Your Answer
+                        <Form.Control type="text" value={answer} onChange={(e) => setAnswer(e.target.value)}/>
+                        <Button type="submit">Submit</Button>
+                    </InputGroup>
+                    
+                </Col>
+            </Row>
+        </Form>
     )
 }
 
