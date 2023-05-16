@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
 const LoadQuestion = (props) => {
