@@ -16,7 +16,7 @@ const PasswordProtect = () => {
 
     const checkPw = () => {
         const answer = document.getElementById("password").value;
-        if (answer === "password") {
+        if (answer === "0522") {
             setIsVerified(true);
         } else {
             alert("Nope")
@@ -42,8 +42,8 @@ const PasswordProtect = () => {
         :
         <Form onSubmit={checkPw} className="mt-5 center" style={{backgroundImage: `url(${img})`, backgroundSize: `cover`}}>
              <Row className="mb-3">
-                 <Form.Label>What is the password?</Form.Label>
-                 <Form.Control type="text" id="password" required />
+                 <Form.Label>When is your birthday?</Form.Label>
+                 <Form.Control type="number" id="password" required />
                  <Button type="submit">Submit</Button>
              </Row>
             
