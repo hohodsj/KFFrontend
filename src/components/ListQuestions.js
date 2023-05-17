@@ -5,8 +5,6 @@ import LoadQuestion from "./subcomponents/Question";
 import RewardPage from "./subcomponents/Reward";
 import { Navigate, useNavigate } from 'react-router-dom';
 
-
-
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
 const ListQuestions = () => {

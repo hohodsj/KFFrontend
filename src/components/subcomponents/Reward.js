@@ -21,7 +21,6 @@ const RewardPage = ({route, navigate}) => {
                     <Image img src={location.state.url} /> 
                 </div>
                 : <span></span>}
-            
         </div>
     )
 }
