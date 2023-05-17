@@ -43,7 +43,6 @@ const PasswordProtect = () => {
         :
         <Form onSubmit={checkPw} className="mt-5 center" style={{backgroundImage: `url(${img})`, backgroundSize: `cover`}}>
              <Row className="mb-3">
-                <p>{img}</p>
                  <Form.Label>When is your birthday?</Form.Label>
                  <Form.Control type="number" id="password" required />
                  <Button type="submit">Submit</Button>
