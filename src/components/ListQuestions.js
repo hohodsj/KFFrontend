@@ -3,6 +3,7 @@ import React from "react";
 import axios from "axios";
 import LoadQuestion from "./subcomponents/Question";
 import RewardPage from "./subcomponents/Reward";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
@@ -14,6 +15,8 @@ const ListQuestions = () => {
 
     const [img, setImg] = useState()
 
+    const navigate = useNavigate();
+    
     useEffect(() => {
         const fetchData = async () => {
         const response = await axios.get(`${base_url}/image/2`, {
@@ -57,7 +60,7 @@ const ListQuestions = () => {
                         {data.map((qna) => (
                         <LoadQuestion id ={qna.id} question={qna.question} hint={qna.hint} correctCountUpdate={() => setCorrectCounter(correctCount => correctCount+1)}/>
                     ))}
-                        {correctCount == data.length ? <RewardPage reward={reward}/>: <span></span>}
+                        {correctCount == data.length ? navigate('/reward', {state:{url:reward}}): <span></span>}
                     </ul>
                 </div>
             ) : (

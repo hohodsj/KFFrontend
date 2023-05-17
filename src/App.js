@@ -6,6 +6,7 @@ import './App.css';
 import PasswordProtect from "./components/PasswordProtected";
 import AdminPage from "./components/Admin";
 import Profile from "./components/Profile";
+import RewardPage from "./components/subcomponents/Reward";
 
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
@@ -17,6 +18,7 @@ function App() {
                 <Route exact path="/" element={<PasswordProtect />} />
                 <Route exact path="admin" element={<AdminPage />} />
                 <Route exact path="profile" element={<Profile />} />
+                <Route exact path="reward" element={<RewardPage/>} />
             </Routes>
         </BrowserRouter>
     );
