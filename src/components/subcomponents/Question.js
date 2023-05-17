@@ -13,6 +13,7 @@ const LoadQuestion = (props) => {
     const [answer, setAnswer] = useState(() => props.answer);
     const [checkmark, setCheckmark] = useState();
     const [count, setCount] = useState(0);
+    const [isAnswered, setIsAnswered] = useState(false)
     
 
     const handleSubmit = async (event) => {
@@ -35,10 +36,14 @@ const LoadQuestion = (props) => {
             ).then((resp) => {
                 if(resp.data.verified) {
                     setCheckmark(<span>&#10003;</span>)
+                    if (!isAnswered) {
+                        props.correctCountUpdate()
+                        setIsAnswered(true)
+                    }
                 } else {
                     setCount(count => count + 1)
                     setCheckmark(<span>&#10060;</span>)
-                    if (count >= 3) {
+                    if (count >= 2) {
                         alert(`Hint:${props.hint}`)
                     }
                 }
