@@ -4,8 +4,7 @@ import axios from "axios";
 import LoadQuestion from "./subcomponents/Question";
 import RewardPage from "./subcomponents/Reward";
 import { Navigate, useNavigate } from 'react-router-dom';
-
-
+import { Button } from "react-bootstrap";
 
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
@@ -60,9 +59,15 @@ const ListQuestions = () => {
                         <li>Number of questions{data.length}</li>
                         <li>Number of correct {correctCount}</li>
                         {data.map((qna) => (
-                        <LoadQuestion id ={qna.id} question={qna.question} hint={qna.hint} correctCountUpdate={() => setCorrectCounter(correctCount => correctCount+1)}/>
+                        qna.id - 1 <= correctCount ? <LoadQuestion id ={qna.id} question={qna.question} hint={qna.hint} correctCountUpdate={() => setCorrectCounter(correctCount => correctCount+1)}/>
+                        : <span></span>
                     ))}
-                        {correctCount == data.length ? navigate('/reward', {state:{url:reward}}): <span></span>}
+                        {correctCount == data.length ?
+                            <div>
+                                <p>You got all the questions! Do you want to proceed?</p>
+                                <Button onClick={() => navigate('/reward', {state:{url:reward}})}>Yes</Button> 
+                            </div>
+                            : <span></span>}
                     </ul>
                 </div>
             ) : (
