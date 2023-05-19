@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Confetti from "react-confetti";
 import { Image } from "react-bootstrap";
 import axios from 'axios';
+
 const base_url = process.env.REACT_APP_KF_BASE_URL
 
 const RewardPage = ({route, navigate}) => {
@@ -23,7 +24,6 @@ const RewardPage = ({route, navigate}) => {
         };
         fetchData();
     }, []);
-
     return (
         <div style={{display: 'flex',
         justifyContent: 'center',
@@ -43,7 +43,6 @@ const RewardPage = ({route, navigate}) => {
                     <Image img src={location.state.url} /> 
                 </div>
                 : <span></span>}
-            
         </div>
     )
 }
