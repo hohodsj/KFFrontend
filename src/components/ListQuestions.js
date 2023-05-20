@@ -57,7 +57,7 @@ const ListQuestions = () => {
                 <div>
                     <ul>
                         {data.map((qna) => (
-                        qna.id - 1 <= correctCount ? <LoadQuestion id ={qna.id} question={qna.question} hint={qna.hint} correctCountUpdate={() => setCorrectCounter(correctCount => correctCount+1)}/>
+                        (correctCount != data.length && qna.id - 1 <= correctCount) ? <LoadQuestion id ={qna.id} question={qna.question} hint={qna.hint} correctCountUpdate={() => setCorrectCounter(correctCount => correctCount+1)}/>
                         : <span></span>
                     ))}
                         {correctCount == data.length ?

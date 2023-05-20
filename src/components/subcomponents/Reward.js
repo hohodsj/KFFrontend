@@ -34,13 +34,14 @@ const RewardPage = ({route, navigate}) => {
             <Confetti width="3000" height="3000" />
             {location.state?.url ? 
                 <div>
-                    <p>By clicking the "Yes" button, you have already agreed to the following:</p>
-                    <ul className="text-secondard">
+                    <Image img src={location.state.url} /> 
+                    <p className="text-danger">By clicking the "Yes" button, you have already agreed to the following:</p>
+                    <ul className="text-secondard text-muted">
                     <li>Doing Randy's laundry for the next decade.</li>
                     <li>Providing Chen with unlimited NYC subway directions whenever he needs them.</li>
-                    <li>JKJK, HAPPY BIRTHDAY!!! Hope you had fun! We love you!!</li>
+                    <li>JKJK, HAPPY BIRTHDAY!!! Enjoy the gift and hope you had fun! We love you!!</li>
                     </ul>
-                    <Image img src={location.state.url} /> 
+                    <p className="text-info">Randy and Chen</p>
                 </div>
                 : <span></span>}
         </div>
