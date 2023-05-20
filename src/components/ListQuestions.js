@@ -56,8 +56,6 @@ const ListQuestions = () => {
             {data ? (
                 <div>
                     <ul>
-                        <li>Number of questions{data.length}</li>
-                        <li>Number of correct {correctCount}</li>
                         {data.map((qna) => (
                         qna.id - 1 <= correctCount ? <LoadQuestion id ={qna.id} question={qna.question} hint={qna.hint} correctCountUpdate={() => setCorrectCounter(correctCount => correctCount+1)}/>
                         : <span></span>
