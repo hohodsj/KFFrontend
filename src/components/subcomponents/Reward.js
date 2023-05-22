@@ -37,11 +37,9 @@ const RewardPage = ({route, navigate}) => {
                     <Image img src={location.state.url} /> 
                     <p className="text-danger">By clicking the "Yes" button, you have already agreed to the following:</p>
                     <ul className="text-secondard text-muted">
-                        <li>Doing Randy's laundry for the next decade.</li>
-                        <li>Providing Chen with unlimited NYC subway directions.</li>
-                        <li>JKJK, HAPPY BIRTHDAY!!! Enjoy the gift and hope you had fun! We love you!!</li>
+                        <li>Random Text</li>
                     </ul>
-                    <p className="text-info">Randy and Chen</p>
+                    <p className="text-info">By</p>
                 </div>
                 : <span></span>}
         </div>
