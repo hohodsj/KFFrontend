@@ -17,6 +17,7 @@ const PasswordProtect = () => {
     const checkPw = () => {
         const answer = document.getElementById("password").value;
         if (answer === "Lol hi") {
+
             setIsVerified(true);
         } else {
             alert("Who are you?")
