@@ -63,8 +63,8 @@ const LoadQuestion = (props) => {
                 <Col xs={4}>
                     <Form.Label># {props.id}</Form.Label>
                     <br/>
-                    <Form.Label>Question: dangerouslySetInnerHTML={{_html: props.question}} {checkmark}
-                    </Form.Label>
+                    <div>Question: dangerouslySetInnerHTML={{_html: props.question}} {checkmark}
+                    </div>
                     <InputGroup>Your Answer
                         <Form.Control type="text" value={answer} onChange={(e) => setAnswer(e.target.value)}/>
                         <Button type="submit">Submit</Button>
