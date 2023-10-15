@@ -63,11 +63,22 @@ const LoadQuestion = (props) => {
                 <Col xs={4}>
                     <Form.Label># {props.id}</Form.Label>
                     <br/>
-                    <Form.Label>Question: {props.question} {checkmark}</Form.Label>
-                    <InputGroup>Your Answer
+                    {props.question.trim().startsWith("<") ?
+                        <div style={{height:550, width:700}} dangerouslySetInnerHTML={{__html: props.question}}/> :
+                        <Form.Label>Question: {props.question} {checkmark}</Form.Label>
+                    }
+                    
+                        <InputGroup>Your Answer
+                            {props.question.trim().startsWith("<iframe") ?
+                                <Form.Control type="text" value={answer} onChange={(e) => setAnswer(e.target.value = "click submit to continue")}/> :
+                                <Form.Control type="text" value={answer} onChange={(e) => setAnswer(e.target.value)}/>
+                            }
+                            <Button type="submit">Submit</Button>
+                        </InputGroup>
+                    {/* <InputGroup>Your Answer
                         <Form.Control type="text" value={answer} onChange={(e) => setAnswer(e.target.value)}/>
                         <Button type="submit">Submit</Button>
-                    </InputGroup>
+                    </InputGroup> */}
                     
                 </Col>
             </Row>
